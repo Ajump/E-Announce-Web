@@ -1,2 +1,2 @@
 # E-Announce-Web
- FYP Project Webiste
+ FYP Project Website
