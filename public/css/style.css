@@ -1,0 +1,107 @@
+.image-background{
+background-image: url(https://firebasestorage.googleapis.com/v0/b/e-announce.appspot.com/o/background1.jpg?alt=media&token=a8ef26a0-7dff-4fbe-a634-11268de4ff85);
+background-size: cover;
+background-position: center;
+min-height: 600px;
+
+}
+.title1{
+  margin: 20%;
+}
+
+#map{
+  height:550px;
+  width:100%;
+}
+
+#mapEdit{
+  height:550px;
+  width:100%;
+}
+
+.img-container {
+  position: relative;
+  overflow: hidden;
+  height: 700px;
+  width: 100%;
+}
+.event-detail {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.mode-edit-icon{
+  padding:0px;
+  color:blue;
+}
+.btn-flat-custom{
+  font-size: 24px;
+  line-height: inherit;
+}
+
+.center-cropped {
+  width: 100px;
+  height: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+ footer.page-footer {
+   margin: 0;
+ }
+ .sidenav-trigger{
+    color: black;
+}
+
+  /* label color */
+  .input-field label {
+    color: #2196f3;
+  }
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: #2196f3;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #2196f3;
+    box-shadow: 0 1px 0 0 #2196f3;
+  }
+  /* valid color */
+  .input-field input[type=text].valid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+  }
+  /* invalid color */
+  .input-field input[type=text].invalid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #000;
+  }
+
+@media screen and (max-width: 670px){
+  header{
+    min-height: 500px;
+  }
+
+
+/*
+@media only screen and (max-width : 992px) {
+    TODO make the web responsive
+    .parallax-container .section {
+      position: absolute;
+      top: 40%;
+    }
+    #index-banner .section {
+      top: 10%;
+    }
+  }
+  
+  @media only screen and (max-width : 600px) {
+     /*TODO make the web responsive
+     #index-banner .section {
+      top: 0;
+    }
+  }*/

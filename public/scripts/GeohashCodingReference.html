@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Geohash encoding/decoding</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Chris Veness, www.movable-type.co.uk">
+    <meta name="keywords" content="geoshash geocode geolocation encode decode latitude longitude">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/eb-garamond/stylesheet.css">
+    <link rel="stylesheet" href="../css/mtl.css">
+    <style>
+        a { font-weight: normal; }
+        td, th { text-align: right; }
+        form li { text-align: left; }
+        .map { height: 480px; width: 480px; margin-right: 1em; }
+        table.neighbours td { text-align: center; }
+        table.sizes td, th { padding: 0 0.2em; }
+    </style>
+    <script defer src="//cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js">/* r224/r298 don't work! */</script>
+    <script defer src="//maps.google.com/maps/api/js?key=AIzaSyDbKDDln0bJkfX4tO4fywUHiGFZaNzKSpc"> </script>
+    <script defer src="../js/mtl.js">/* MTL utils */</script>
+    <script type="module">
+        import Geohash from 'https://cdn.jsdelivr.net/gh/chrisveness/latlon-geohash/latlon-geohash.js';
+        import Dms from 'https://cdn.jsdelivr.net/npm/geodesy@2/dms.js';
+
+        // initialise maps
+        const mapOptions = {
+            zoom: 0,
+            center: new google.maps.LatLng(0, 0),
+            mapTypeId: google.maps.MapTypeId.HYBRID,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+            },
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL
+            },
+            scaleControl: true
+        };
+        const map = new google.maps.Map(document.querySelector('#map-canvas'), mapOptions);
+
+        let box = null, label;
+
+        function drawCell(geohash) {
+            if (box) box.setMap(null);
+
+            const bounds = Geohash.bounds(geohash);
+
+            // google maps doesn't extend beyond ±85°
+            bounds.sw.lat = Math.min(Math.max(bounds.sw.lat, -85), 85);
+            bounds.ne.lat = Math.min(Math.max(bounds.ne.lat, -85), 85);
+
+            const boxBounds = new google.maps.LatLngBounds(
+                    new google.maps.LatLng(bounds.sw.lat, bounds.sw.lon),
+                    new google.maps.LatLng(bounds.ne.lat, bounds.ne.lon)
+            );
+            box = new google.maps.Rectangle({
+                bounds: boxBounds,
+                strokeColor: '#0000ff',
+                strokeOpacity: 0.8,
+                strokeWeight: 1,
+                fillColor: '#0000ff',
+                fillOpacity: 0.2
+            });
+            //console.log(box);
+            box.setMap(map);
+            map.fitBounds(box.bounds);
+        }
+
+        function drawLabel(geohash) {
+            const centre = Geohash.decode(geohash);
+
+            if (typeof label == 'undefined') {
+                label = new google.maps.InfoWindow({
+                    maxWidth: 100
+                });
+            }
+            label.setContent(geohash);
+            label.setPosition(new google.maps.LatLng(centre.lat, centre.lon));
+            label.open(map)
+        }
+
+        function showNeighbours(geohash) {
+            const neighbours = Geohash.neighbours(geohash);
+            document.querySelector('#neighbour-nw').textContent = neighbours.nw;
+            document.querySelector('#neighbour-n').textContent = neighbours.n;
+            document.querySelector('#neighbour-ne').textContent = neighbours.ne;
+            document.querySelector('#neighbour-w').textContent = neighbours.w;
+            document.querySelector('#neighbour-me').textContent = geohash;
+            document.querySelector('#neighbour-e').textContent = neighbours.e;
+            document.querySelector('#neighbour-sw').textContent = neighbours.sw;
+            document.querySelector('#neighbour-s').textContent = neighbours.s;
+            document.querySelector('#neighbour-se').textContent = neighbours.se;
+            document.querySelector('#neighbour-me').style.fontWeight = 'bold';
+        }
+
+        document.addEventListener('DOMContentLoaded', function(event) {
+            document.querySelectorAll('#lat,#lon').forEach(input => input.onchange = function() {
+                // encode geohash
+                try {
+                    const lat = Dms.parse(document.querySelector('#lat').value);
+                    const lon = Dms.parse(document.querySelector('#lon').value);
+                    const precision = document.querySelector('#precision').value;
+                    const geohash = Geohash.encode(lat, lon, precision);
+                    document.querySelector('#geohash').value = geohash;
+
+                    drawCell(geohash);
+                    drawLabel(geohash);
+                    showNeighbours(geohash);
+                } catch (err) { console.log(err); }
+            });
+
+            document.querySelector('#precision').onchange = function() {
+                // encode geohash & reset lat/lon to reflect new precision
+                try {
+                    const lat = Dms.parse(document.querySelector('#lat').value);
+                    const lon = Dms.parse(document.querySelector('#lon').value);
+                    const precision = document.querySelector('#precision').value;
+                    const geohash = Geohash.encode(lat, lon, precision);
+                    const latlon = Geohash.decode(geohash);
+                    document.querySelector('#lat').value = latlon.lat;
+                    document.querySelector('#lon').value = latlon.lon;
+                    document.querySelector('#geohash').value = geohash;
+
+                    drawCell(geohash);
+                    drawLabel(geohash);
+                    showNeighbours(geohash);
+                } catch (err) { console.log(err); }
+            };
+
+            document.querySelector('#geohash').onchange = function() {
+                // decode geohash
+                const geohash = document.querySelector('#geohash').value;
+                const latlon = Geohash.decode(geohash);
+                document.querySelector('#lat').value = latlon.lat;
+                document.querySelector('#lon').value = latlon.lon;
+                document.querySelector('#precision').value = document.querySelector('#geohash').value.length;
+
+                drawCell(geohash);
+                drawLabel(geohash);
+                showNeighbours(geohash);
+            };
+
+
+            // initial geohash
+            document.querySelector('#geohash').value ='gbsuv';
+            document.querySelector('#geohash').onchange();
+
+            // ---- url query arguments
+            if (new URLSearchParams(location.search).get('geohash')) {
+                document.querySelector('#geohash').value = new URLSearchParams(location.search).get('geohash');
+                document.querySelector('#geohash').onchange();
+            }
+            if (new URLSearchParams(location.search).get('latlon')) {
+                const [ lat, lon ] = new URLSearchParams(location.search).get('latlon').split(',');
+                document.querySelector('#lat').value = lat;
+                document.querySelector('#lon').value = lon;
+                document.querySelector('#lat').onchange();
+            }
+
+        });
+    </script>
+    <script> /* show source code */
+    'use strict';
+    document.addEventListener('DOMContentLoaded', function(event) {
+        // show source code
+        fetch('https://cdn.jsdelivr.net/gh/chrisveness/latlon-geohash@2/latlon-geohash.js')
+            .then(function(res) { return res.ok ? res.text() : res.status+' '+res.statusText; })
+            .then(function(txt) { document.querySelector('#geohash-source-code').textContent = txt; prettyPrint(); })
+            .catch(function(err) { document.querySelector('#error').textContent = err.message; });
+    });
+    </script>
+</head>
+
+<body>
+<header> <a href="../"><img src="../images/mtl.gif" alt="Movable Type Home Page"></a>
+  <h1>Movable Type Scripts</h1>
+  <hr>
+  <h2>Geohashes</h2>
+</header>
+
+
+<p>A <a href="http://en.wikipedia.org/wiki/Geohash">geohash</a> is a convenient way of expressing a
+    location (anywhere in the world) using a short alphanumeric string, with greater precision
+    obtained with longer strings.</p>
+
+<form>
+    <fieldset><legend>Geohash</legend>
+        <p>Enter latitude, longitude &amp; precision to obtain geohash; enter geohash to obtain latitude/longitude.</p>
+        <ul>
+            <li>
+                <label>Latitude / Longitude</label>
+                <input type="text" name="lat" id="lat" class="latlon" placeholder="Latitude (°N/S)" title="Latitude (°N/S)"> ,
+                <input type="text" name="lon" id="lon" class="latlon" placeholder="Longitude (°E/W)" title="Longitude (°E/W)">
+            </li>
+            <li>
+                <label>Precision</label>
+                <select name="precision" id="precision" class="latlon">
+                    <option value="1">1 character</option>
+                    <option value="2">2 characters</option>
+                    <option value="3">3 characters</option>
+                    <option value="4">4 characters</option>
+                    <option value="5">5 characters</option>
+                    <option value="6">6 characters</option>
+                    <option value="7">7 characters</option>
+                    <option value="8">8 characters</option>
+                    <option value="9">9 characters</option>
+                </select>
+            </li>
+            <li>
+                <label>Geohash</label>
+                <input type="text" name="geohash" id="geohash">
+            </li>
+        </ul>
+        <div id="map-canvas" class="map float-left"></div>
+
+        <div>
+            <p>Neighbours:</p>
+            <table class="neighbours">
+                <tr>
+                    <td id="neighbour-nw"> </td><td id="neighbour-n"></td>  <td id="neighbour-ne"></td>
+                </tr>
+                <tr>
+                    <td id="neighbour-w">  </td><td id="neighbour-me"></td> <td id="neighbour-e"></td>
+                </tr>
+                <tr>
+                    <td id="neighbour-sw"> </td><td id="neighbour-s"></td>  <td id="neighbour-se"></td>
+                </tr>
+            </table>
+        </div>
+
+    </fieldset>
+</form>
+
+<p><a href="geohash.jpg" class="float-right"><img src="geohash.jpg" style="max-width:100px"></a>A
+    geohash actually identifies a rectangular cell: at each level, each extra character identifies
+    one of 32 sub-cells.</p>
+
+<p>The cell sizes of geohashes of different lengths are as follows; note that the cell width reduces
+    moving away from the equator (to 0 at the poles):</p>
+<table class="sizes">
+    <tr>
+        <th>Geohash length</th>
+        <th>Cell width</th>
+        <th colspan="2">Cell height</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><span class="small grey">≤</span> 5,000km</td>
+        <td>×</td>
+        <td>5,000km</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><span class="small grey">≤</span> 1,250km</td>
+        <td>×</td>
+        <td>625km</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><span class="small grey">≤</span> 156km</td>
+        <td>×</td>
+        <td>156km</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td><span class="small grey">≤</span> 39.1km</td>
+        <td>×</td>
+        <td>19.5km</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td><span class="small grey">≤</span> 4.89km</td>
+        <td>×</td>
+        <td>4.89km</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td><span class="small grey">≤</span> 1.22km</td>
+        <td>×</td>
+        <td>0.61km</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td><span class="small grey">≤</span> 153m</td>
+        <td>×</td>
+        <td>153m</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td><span class="small grey">≤</span> 38.2m</td>
+        <td>×</td>
+        <td>19.1m</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td><span class="small grey">≤</span> 4.77m</td>
+        <td>×</td>
+        <td>4.77m</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td><span class="small grey">≤</span> 1.19m</td>
+        <td>×</td>
+        <td>0.596m</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td><span class="small grey">≤</span> 149mm</td>
+        <td>×</td>
+        <td>149mm</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td><span class="small grey">≤</span> 37.2mm</td>
+        <td>×</td>
+        <td>18.6mm</td>
+    </tr>
+</table>
+
+<p>Nearby locations generally have similar prefixes, though not always: there are edge-cases straddling
+    large-cell boundaries; in France, La Roche-Chalais (u000) is just 30km from Pomerol (ezzz).
+    A reliable prefix search for proximate locations will also search prefixes of a cell’s 8 neighbours.
+    (e.g. a database query for results within 30-odd kilometres of Pomerol would be
+    <code>SELECT * FROM MyTable WHERE LEFT(Geohash, 4) IN ('ezzz', 'gbpb, 'u000', 'spbp', 'spbn', 'ezzy', 'ezzw', 'ezzx', 'gbp8')</code>.
+    Whether this would offer significant (or any) performance gains over a latitude/longitude
+    <a href="latlong-db.html">bounding box</a> search I’ve yet to check.</p>
+
+<p>Fun geohashes: ‘sunny’ is in Saudi Arabia, ‘fur’ in Greenland, ‘reef’ in the Coral Sea, ‘geek’ in Iceland
+    (sadly, ‘eu’ is in the  Maghreb, not Europe, and ‘queen’ [Priscilla?] is lost in the Australian desert).</p>
+
+
+<hr class="fullwidth">
+
+<p id="postscript">See below for the JavaScript source code,
+    also available on <a href="https://github.com/chrisveness/latlon-geohash/blob/master/latlon-geohash.js">GitHub</a>.
+    These functions should be simple to translate into other languages if required. It’s also available
+    from the <a href="https://www.jsdelivr.com/package/npm/latlon-geohash">jsDelivr</a> CDN or
+    as an <a href="https://www.npmjs.org/package/latlon-geohash">npm</a> package for Node.js.</p>
+<p id="licence"><a href="http://opensource.org/licenses/MIT" class="float-right"><img src="license-osi-mit.png" alt="OSI MIT License"></a>
+    I offer these scripts for free use and adaptation to balance my debt to the
+    open-source info-verse. You are welcome to re-use these scripts [under an <a href="http://opensource.org/licenses/MIT">MIT</a> licence, without
+    any warranty express or implied] provided solely that you retain my copyright notice and a link
+    to this page.</p>
+
+<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=3737803" class="float-right">
+        <img alt="Paypal donation" style="margin:4px" src="https://www.paypal.com/en_GB/i/btn/btn_donate_SM.gif"></a>
+    If you would like to show your appreciation and support continued development of these scripts,
+    I would most gratefully accept <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=3737803" title="Thank you!">donations</a>.</p>
+<p>If you have any queries or find any problems, contact me at <span class="rtl">ku.oc.epyt-elbavom@oeg-stpircs</span>.</p>
+<p><span class="note"><i>© 2014–2019 Chris Veness</i></span> </p>
+
+<hr class="fullwidth">
+
+
+<pre class="fullwidth prettyprint" id="geohash-source-code">
+</pre>
+
+</body>
+</html>

@@ -1,0 +1,1157 @@
+<html lang="en">
+<head>
+<!--
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+Make the Web Progressive compitable based on mobile size
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Compiled and minified Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <title>EAnnounce</title>
+
+ 
+</head>
+<body class="white lighten-4">
+
+   <!------------------------------------------------------ NAVBAR ------------------------------------------------------------------>
+   <div class="navbar-fixed">
+   <nav class="z-depth-2 white lighten-4">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">
+          <!-- <img src="img/logo.svg" style="width: 180px; margin-top: 10px;"> -->
+          <img src="img/EAnnounce_Logo.png" style="width: 195px; margin-top: 5px;">
+        </a>
+        
+        <a href="#" data-target="sidenav-slide" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+       
+        <ul id="nav-mobile" class="right hide-on-med-and-down">    
+            
+              <li class="logged-in" style="display: none;">
+                <a href="#" class="blue-text" id="home">
+                  <div class="valign-wrapper" style="font-size: 15px;"><i class="small material-icons">home</i>Home</div>
+                </a>
+              </li>
+              <!-- <li class="logged-in" style="display: none;">
+                <a href="#" class="blue-text modal-trigger" data-target="modal-account">
+                  <div class="valign-wrapper" style="font-size: 15px;"><i class="small material-icons">account_box</i>Account</div></a>
+              </li> -->
+              <li class="logged-in" style="display: none;">
+                <a href="#" class="blue-text" id="addNewEvent">
+                    <div class="valign-wrapper" style="font-size: 15px;"><i class="small material-icons">add_box</i>Add New Event</div>
+                  </a>
+              </li>
+              <!-- <li class="logged-in" style="display: none;">
+                  <a href="#" class="blue-text" id="addNewLocation">Add New Location</a>
+                </li> -->
+              <li class="logged-in" style="display: none;">
+                  <a href="#" class="blue-text" id="logout">
+                      <div class="valign-wrapper" style="font-size: 15px;"><i class="small material-icons">directions_run</i>Logout</div>
+                    </a>
+                </li>
+                
+                <li class="logged-out" style="display: none;">
+                  <a href="https://drive.google.com/open?id=1DfY8MwW_xZTACoI9ySFF7QLQ8BZ5iwwy" class="blue-text">Download</a>
+                </li>
+              <li class="logged-out" style="display: none;">
+                <a id="loginModal" href="#" class="blue-text modal-trigger" data-target="modal-login">
+                    <div class="valign-wrapper" style="font-size: 15px;"><i class="small material-icons">lock</i>Login</div>
+                </a>
+              </li>
+              <!-- <li class="logged-out" style="display: none;">
+                <a href="#" class="blue-text modal-trigger" data-target="modal-signup">Sign up</a>
+              </li> -->
+        </ul>
+      </div>
+  </nav>
+  </div>
+
+  <!----------------------------------------------------- SIDE NAVBAR ------------------------------------------------------------------>
+  <ul class="sidenav" id="sidenav-slide">
+    <div  style="margin-top:20%;">
+      <div class="center-align"><img src="img/EAnnounce_Logo_E.png" class="responsive-img "></div>
+      <div class="divider"></div>
+      <li class="logged-in" style="display: none;">
+          <a href="#" class="blue-text" id="home">
+              <div class="valign-wrapper" style="font-size: 15px;"><i class="small material-icons">home</i>Home</div>
+          </a> 
+      <div class="divider"></div>
+      </li>
+     
+      <!-- <li class="logged-in" style="display: none;">
+        <a href="#" class="blue-text modal-trigger" data-target="modal-account">Account</a>
+        <div class="divider"></div>
+      </li> -->
+      <li class="logged-in" style="display: none;">
+          <a href="#" class="blue-text" id="addNewEvent">
+              <div class="valign-wrapper" style="font-size: 15px;"><i class="small material-icons">add_box</i>Add New Event</div>
+          </a> 
+          <div class="divider"></div>
+      </li>
+     
+      <!-- <li class="logged-in" style="display: none;">
+          <a href="#" class="blue-text" id="addNewLocation">Add New Location</a>
+          <div class="divider"></div>
+      </li> -->
+      <li class="logged-in" style="display: none;">
+        <a href="#" class="blue-text" id="logout">
+            <div class="valign-wrapper" style="font-size: 15px;"><i class="small material-icons">directions_run</i>Logout</div>
+        </a>
+        <div class="divider"></div>
+      </li>
+
+      <li class="logged-out" style="display: none;">
+        <a href="https://drive.google.com/open?id=1DfY8MwW_xZTACoI9ySFF7QLQ8BZ5iwwy" class="blue-text">Download</a>
+        <div class="divider"></div>
+      </li>
+
+      <li class="logged-out" style="display: none;">
+        <a id="loginModal" href="#" class="blue-text modal-trigger" data-target="modal-login">
+            <div class="valign-wrapper" style="font-size: 15px;"><i class="small material-icons">lock</i>Login</div>
+        </a>
+        <div class="divider"></div>
+      </li>
+      
+      <!--<li class="logged-out" style="display: none;">
+        <a href="#" class="blue-text modal-trigger" data-target="modal-signup">Sign up</a>
+        <div class="divider"></div>
+      </li>
+      -->
+    </div>
+  </ul>
+
+  
+  <!--------------------------------------------------- MAIN CONTENT ------------------------------------------------------------------->
+  <div class="main-content" style="display: none;">
+
+      
+      <div class="image-background">
+        <div class="black-text"style="position: absolute;margin-top: 8%;margin-left:15%;">
+         <h3><b>WELCOME to E-ANNOUNCE <br>Web Application</b></h3>
+           <br><h5>This is Event Announcement Web Applicaiton that<br> Announce All Event in the UiTM Perlis</h5>
+        </div>
+      </div>
+     
+        <!-- photo / grid -->
+      <section class="container section" id="photos" style="margin-top: 5%;">
+          <div class="card-panel white z-depth-3">
+          <div class="row">
+            <div class="col s12 l4">
+                <img src="img/notification.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="col s12 l6 offset-l1">
+              <h2 class="blue-text lighten-1">Notification</h2>
+              <p><h6>Enchance the user to receive notification through E-Announce Application during ongoing event in the campus.</h6></p>
+            </div>
+          </div>
+          </div>
+          <div class="card-panel white z-depth-3">
+          <div class="row">
+            <div class="col s12 l4 offset-l1 push-l7">
+                <img src="img/locationMap.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="col s12 l6 offset-l1 pull-l5 right-align">
+              <h2 class="red-text lighten-1">Event  Map Location</h2>
+              <p><h6>Event location map can enhanced user capability to get the event direction from their location.</h6></p>
+            </div>
+          </div>
+          </div>
+          <div class="card-panel white z-depth-3">
+          <div class="row">
+            <div class="col s12 l4">
+                <img src="img/information.jpg" alt="" class="responsive-img">
+            </div>
+            <div class="col s12 l6 offset-l1">
+              <h2 class="green-text lighten-1">Simple Information</h2>
+              <p><h6>Simple information will give the user easy to understand the content of event through E-Announce Application.</h6></p>
+            </div>
+          </div>
+          </div>
+        </section>
+        
+      
+  </div><!--main content closed div tag-->
+ 
+  <!-------------------------------------------------- SIGN UP MODAL ----------------------------------------------------------------->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" required />
+          <label for="signup-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="signup-bio" required />
+          <label for="signup-bio">One Line bio</label>
+        </div>
+        <button class="btn green darken-2 z-depth-0">Sign up</button>
+      </form>
+    </div>
+  </div> 
+
+  <!-------------------------------------------------- LOGIN MODAL --------------------------------------------------------------->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4><br />
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn green darken-2 z-depth-0">Login</button>
+        <p class="error red-text center-align"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-------------------------------------------------- ACCOUNT MODAL ------------------------------------------------------------->
+  <div id="modal-account" class="modal">
+    <div class="modal-content center-align">
+      <h4>Account details</h4><br />
+      <div class="account-details"></div>
+      <div class="account-extras"></div>
+    </div>
+  </div>
+
+<!-------------------------------------------------- ADD NEW LOCATION MAP ------------------------------------------------------------>
+<!-- <div class="container add-location-content" style="display: none; margin-top: 40px;">
+    <div class="row">
+        <h3>My Google Maps Demo</h3>
+    </div>
+    <div class="row error-location-content" style="display: none;">
+      <div class="col s12">
+        <div class="card-panel red">
+          <span class="white-text">Please select location by clicking at the Map below.</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <form id="addLocationForm">
+        <div class="input-field col s12 m6">
+            <input type="text" id="locationName" required>
+            <label for="locationName">Location Name</label>
+        </div> 
+        <div class="col s12 m6">
+          <div class="row">
+              <div class="input-field col s8">
+                <input type="text" id="locationGeohash" disabled>
+                <label for="locationGeohash">Location Geohash</label>
+              </div> 
+              <div class="right-align col s4" style="position: relative; margin-top: 1.5rem; margin-bottom: 1rem;">
+                  <button type="submit" class="btn green darken-2 z-depth-0">Submit</button>
+              </div> 
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            The div element for the map -->
+            <!-- <div id="map"></div> -->
+            <!-- <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SSkK8HGpwEpVLhsgSldaG1MEZC6nZqS5" width="640" height="480"></iframe> 
+        </div>
+    </div>
+</div> -->
+
+<!---------------------------------------------------- LOADING SCREEN WHEN SUBMIT ADD EVENT ------------------------------------------------------------->
+<div id="loading-screen" style="display:none;">
+<div class="container" style="margin-top: 30px;">
+    <div class="row center-align">  
+        <img src="img/loadingImg.jpg" >      
+        <span><h5><b>Uploading image in progress. Please wait.</b></h5></span>
+      </div>
+      <div class="row" style="padding-left:20%;padding-right: 20%; ">
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+  <!-------------------------------------------------- ADD NEW EVENT ------------------------------------------------------------->
+    <div class="container add-event-content" style="display: none; margin-top: 40px;">
+        <div style="margin-bottom: 40px; margin-left: 40px; margin-right: 40px;">
+            <h4>Add New Event</h4>
+          </div>
+    
+      <form id="addEventForm" >
+      <!-- Card view white -->
+      <div class="card white z-depth-3 col s12" style="padding: 20px; margin-left: 40px; margin-right: 40px;">
+        <div class="row" style="margin-bottom: 0px;">
+          <div class="col s12">
+            <h5><b>Event Details</b></h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" id="eventName" required>
+            <label for="eventName">Event Name*</label>
+          </div>  
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+              <input type="text" id="dateStart" class="datepicker">
+              <label for="dateStart">Start Date*</label>
+          </div>
+          <div class="input-field col s6">
+              <input type="text" id="dateEnd" class="datepicker" required>
+              <label for="dateEnd">End Date*</label>
+          </div>
+        </div>  
+
+        <div class="row">
+          <div class="input-field col s6">
+              <input type="text" id="timeStart" class="timepicker" required></input>
+              <label for="timeStart">Start Time*</label>
+          </div>
+          <div class="input-field col s6">
+              <input type="text" id="timeEnd" class="timepicker" required></input>
+              <label for="timeEnd">End Time*</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6" required>      
+              <select id="category">
+                <option value="" disabled selected>Choose Category</option>
+                <option value="Faculty">Faculty</option>
+                <option value="College">College</option>
+                <option value="MPP">MPP</option>
+                <option value="Others">Others</option>
+              </select>
+              <label>Event Category*</label> 
+          </div>
+          <div class="input-field col s6">
+              <input type="text" id="eventOrganizer" required>
+              <label>Event Organizer</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field  col s12">
+            <textarea id="description" class="materialize-textarea"></textarea>
+            <label for="description">Event Description</label>
+          </div>
+        </div>
+      </div> <!--card view white 1 close tag-->
+      
+      <!-- card view white 2 -->
+      <div class="card white card white z-depth-3 col s12" style="padding: 20px; margin-left: 40px; margin-right: 40px;">
+        <div class="row" style="margin-bottom: 0px;">
+          <div class="col s12">
+            <h5><b>Map Location Details</b></h5>
+          </div>
+        </div>
+        <!-- New Location Map Content inside add event -->
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input type="hidden" id="location_Geohash">
+                <input type="text" id="location_Name" required>
+                <label for="location_Name">Location Name*</label>
+            </div> 
+        </div>
+        <div class="row" style="margin-bottom: 0px;">
+          <div class="col s12">
+              <div class="valign-wrapper" style="font-size: 15px;">
+                  <i class="material-icons">info</i>
+                  <span class="event-detail">Please choose event location on the map below</span>
+              </div>  
+          </div>
+        </div>
+
+           
+        <div class="row">
+            <div class="col s12">
+                <!--The div element for the map -->
+                <div id="map"></div>
+            </div>
+        </div>
+      </div> <!--card view white 2 close tag-->
+        <!-- Location Select Dropdown 
+         <div class="row">
+            <div class="input-field col s6">
+                <select id="location">
+                 <option value="" disabled selected>Choose Location</option>
+                   <option value="Pusat Islam">Pusat Islam</option>
+                  <option value="Mushroom">Mushroom</option>
+                  <option value="Star Complex">Star Complex</option>
+                </select>
+                <label>Event Location</label>
+            </div>
+        </div> -->
+
+        <!-- card view white 3 -->
+      
+      <div class="card white z-depth-3 col s12" style="padding: 20px; margin-left: 40px; margin-right: 40px;">
+        <div class="row" style="margin-bottom: 0px;">
+          <div class="col s12">
+            <h5><b>Other Information Details</b></h5>
+          </div>
+        </div>
+        <div class="row">  
+          <!-- speaker -->
+            <div class="input-field col s6">
+                <input type="text" id="speaker" >
+                <label for="speaker">Speaker</label>
+            </div>
+            
+            <!-- poster image -->
+            <div class="file-field input-field col s6">
+                <div class="btn cyan">
+                  <span>Insert Image</span>
+                  <input id="filePoster" type="file" accept="image/*">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                  <label for="poster">Insert Poster Image*</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- contact person 1 -->
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" id="contactName_1" >
+            <label for="contactName_1">Contact Person Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" id="contactNumber_1" >
+            <label for="contactNumber_1">Contact Person Number</label>
+          </div>
+        </div>
+
+        <!-- contact person 2 -->
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" id="contactName_2" >
+            <label for="contactName_2">Contact Person Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" id="contactNumber_2" >
+            <label for="contactNumber_2">Contact Person Number</label>
+          </div>
+        </div>
+
+    
+      <!----------- CHECK BOX ---------------->
+      <div class="row">
+          <div class="col s3">
+              <div class="row">
+                <label>
+                    <input id="foodAvail" class="col s2" type="checkbox" />
+                    <span class="col s10">Food Availability</span>
+                </label>
+              </div>
+          </div>
+          <div class="col s3">
+              <div class="row">
+                <label>
+                    <input id="couponAvail" class="col s2" type="checkbox" />
+                    <span class="col s10">Coupon Availability</span>
+                </label>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="left-align col s12">
+            <h4>
+              <button class="btn return-homepage red darken-2 z-depth-0">Back</button>
+              <button type="submit" class="btn green darken-2 z-depth-0">Submit</button>
+            </h4>
+          </div>
+        </div>
+      </div> <!--card view white 3 close tag-->
+    </form>
+  
+</div>
+ 
+
+  <!-------------------------------------------------- SEARCH CONTENT AND SELECT -------------------------------------------------->
+  <div id="search-content" class="container" style="display: none; margin-top: 40px;">
+    <!--SEARCH-->
+    <div class="row">
+     <form id="searchForm">
+      <div class="col s6">
+        <div class="valign-wrapper">  
+          <i class="material-icons">search</i>  
+          <input id="searchData" type="search" placeholder="Search">
+      </div>
+      </div>   
+    </form>
+    <div class="col s6" style="margin-top: 10px;">
+
+    <!-- SELECT -->
+     <!-- USE getDay() function to get the day for each -->
+          <a id="allEvent" class="waves-effect waves-blue btn-flat">All Events</a>
+          <a id="upcomingEvent" class="waves-effect waves-blue btn-flat">Upcoming</a>
+          <a id="todayEvent" class="waves-effect waves-blue btn-flat">Today</a>
+          <a id="previousEvent" class="waves-effect waves-blue btn-flat">Previous</a>
+        <!--<select id="eventTimeline">
+              <option value="Upcoming">Upcoming</option>
+              <option value="Today">Today</option>
+              <option value="Previous">Previous</option>
+            </select>-->     
+    </div>
+  </div>
+  <div class="row">
+  <!-- NO EVENT DATA AVAILABLE SCREEN --->
+  <div id="no-event-screen" style="display:none;">
+    <div class="container" style="margin-top: 30px;">
+        <div class="row center-align" style="height:500px; width:500px;">  
+            <img src="img/nodata.jpg" >      
+            <span><h5><b>Sorry No Event Available</b></h5></span>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+
+
+<!-------------------------------------------------- EVENT CARD LIST -------------------------------------------------------------------->
+  <div id="event-card" class="container" style="display: none; margin-top: 40px;">
+    <div id="event-card-list" class="row">
+      
+    </div>
+  </div>
+  
+
+<!-------------------------------------------------- UPDATE SELECTED EVENTS MODAL CONTENT -------------------------------------------------->
+<div id="update-Selected-Modal">
+  
+  <!-- UPDATE EVENT IMAGE POSTER MODAL CONTENT -->
+  <div id="modal-updatePoster" class="updateModal modal ">
+    <div class="modal-content">
+          <h5>Update Event Poster</h5>
+          <input id="newEventNamePoster" type="hidden">
+          <div class="divider"></div>
+
+        <!-- poster image -->
+        <div class="file-field input-field col s6">
+          <div class="btn cyan">
+            <span>Insert Image</span>
+            <input id="updateFilePoster" type="file" accept="image/*">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+            <label for="poster">Insert Poster Image</label>
+          </div>
+      </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button id="updatePosterBtn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+        <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+      </div>   
+  </div>
+  
+  <!-- UPDATE EVENT NAME MODAL CONTENT -->
+  <div id="modal-updateName" class="updateModal modal">
+    <div class="modal-content">
+        <h5>Update Event Name</h5>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="input-field col s12">
+              Event Name: <input id="editName" type="text" class="validate">
+            </div>  
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button id="updateNameBtn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+        <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+      </div>   
+  </div>
+
+  <!-- UPDATE EVENT DATE MODAL CONTENT -->
+  <div id="modal-updateDate" class="updateModal modal">
+      <div class="modal-content">
+          <h5>Update Event Date</h5>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="input-field col s6">
+             Start Date : <input id="editDateStart" type="text" class="datepicker">
+            </div>  
+          </div>
+          <div class="row">
+              <div class="input-field col s6">
+                End Date: <input id="editDateEnd" type="text" class="datepicker">
+              </div>  
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button id="updateDateBtn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+          <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+        </div>   
+    </div>
+
+  <!-- UPDATE EVENT TIME MODAL CONTENT -->
+  <div id="modal-updateTime" class="updateModal modal">
+      <div class="modal-content">
+          <h5>Update Event Time</h5>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="input-field col s6">
+              Start Time: <input id="editTimeStart" type="text" class="timepicker">
+            </div>  
+          </div>
+          <div class="row">
+              <div class="input-field col s6">
+                End Time: <input id="editTimeEnd" type="text" class="timepicker">
+              </div>  
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button id="updateTimeBtn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+          <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+        </div>   
+    </div>
+
+  <!-- UPDATE EVENT LOCATION MODAL CONTENT -->
+  <div id="modal-updateLocation" class="updateModal modal modal-fixed-footer">
+      <div class="modal-content">
+          <h5>Update Event Location</h5>
+          <div class="divider"></div>
+          
+          <div class="row">
+              <div class="input-field col s12 m6">
+                  <input type="hidden" id="editLocation_Geohash">
+                  <input type="text" id="editLocation_Name" required>
+                  <label for="editLocation_Name">Location Name</label>
+              </div> 
+          </div>
+          <div class="row">
+              <div class="col s12">
+                  <!--The div element for the map -->
+                  <div id="mapEdit"></div>
+              </div>
+          </div>
+          
+          <!-- <div class="row">
+            <div class="input-field col s6">
+              <select id="editLocation">
+                  <option value="" disabled selected>Choose New Location</option>
+                  <option value="Pusat Islam">Pusat Islam</option>
+                  <option value="Mushroom">Mushroom</option>
+                  <option value="Star Complex">Star Complex</option>
+                </select>
+            </div>  
+          </div> -->
+        </div>
+        <div class="modal-footer">
+          <button id="updateLocationBtn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+          <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+        </div>   
+    </div>
+
+  <!-- UPDATE EVENT CATEGORY MODAL CONTENT -->
+  <div id="modal-updateCategory" class="updateModal modal">
+      <div class="modal-content">
+          <h5>Update Event Category</h5>
+          <div class="divider"></div>
+          Event Category:
+          <div class="row">
+            <div class="input-field col s6">
+              <select id="editCategory">
+                <option value="" disabled selected>Choose New Category</option>
+                <option value="Faculty">Faculty</option>
+                <option value="College">College</option>
+                <option value="MPP">MPP</option>
+                </select>
+            </div>  
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="updateCategoryBtn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+          <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+        </div>   
+    </div>
+
+  <!-- UPDATE EVENT ORGANIZER MODAL CONTENT -->
+  <div id="modal-updateOrganizer" class="updateModal modal">
+      <div class="modal-content">
+          <h5>Update Event Organizer</h5>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="input-field col s12">
+              Event Organizer: <input id="editOrganizer" type="text" class="validate">
+            </div> 
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="updateOrganizerBtn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+          <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+        </div>   
+    </div>
+
+  <!-- UPDATE EVENT SPEAKER MODAL CONTENT -->
+  <div id="modal-updateSpeaker" class="updateModal modal">
+      <div class="modal-content">
+          <h5>Update Event Speaker</h5>
+          <div class="divider"></div>
+          <div class="row">
+              <div class="input-field col s12">
+               Event Speaker: <input id="editSpeaker" type="text" class="validate">
+              </div>  
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button id="updateSpeakerBtn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+          <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+        </div>   
+    </div>
+
+  <!-- UPDATE EVENT CONTACT PERSON 1 MODAL CONTENT -->
+  <div id="modal-updateContactPerson1" class="updateModal modal">
+      <div class="modal-content">
+          <h5>Update Event Contact Person</h5>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="input-field col s6">
+             Contact Name: <input id="editContactName1" type="text" class="validate">
+            </div>  
+          </div>
+          <div class="row">
+              <div class="input-field col s6">
+               Contact Number: <input id="editContactNumber1" type="text" class="validate">
+              </div>  
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button id="updateContactPerson1Btn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+          <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+        </div>   
+    </div>
+
+    <!-- UPDATE EVENT CONTACT PERSON 2 MODAL CONTENT -->
+  <div id="modal-updateContactPerson2" class="updateModal modal">
+      <div class="modal-content">
+          <h5>Update Event Contact Person</h5>
+          <div class="divider"></div>
+          <div class="row">
+            <div class="input-field col s6">
+                Contact Name: <input id="editContactName2" type="text" class="validate">
+            </div>  
+          </div>
+          <div class="row">
+              <div class="input-field col s6">
+                  Contact Number: <input id="editContactNumber2" type="text" class="validate">
+              </div>  
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button id="updateContactPerson2Btn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+          <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+        </div>   
+    </div>
+
+    <!-- UPDATE EVENT AVAILABILITY CHECKBOX MODAL CONTENT-->
+    <div id="modal-updateAddInfo" class="updateModal modal modal-fixed-footer">
+        <div class="modal-content">
+            <h5>Update Event Additional Information</h5>
+            <div class="divider" style="margin-bottom:10px;"></div>
+            <!-- FOOD AVAILABILITY-->
+            <div class="row">   
+                <div class="col s6">
+                    <label>
+                      <input id="editFood" type="checkbox"/>
+                      <span>Food Available</span>
+                    </label>
+                  </div>  
+              </div>
+              <!-- COUPON AVAILABILITY-->
+              <div class="row">
+                <div class="col s6">
+                  <label>
+                    <input id="editCoupon" type="checkbox"/>
+                    <span>Coupon Available</span>
+                  </label>
+                </div>   
+              </div>
+               <!-- EVENT DESCRIPTION -->
+               <div class="row" style="margin-bottom: 0px;">
+                  <div class="col s12">
+                    <span class="align-left" style="font-size:24px;">Description</span>
+                  </div>  
+                </div>
+              <div class="row">
+                <div class="input-field col s12" style="margin-top:0px;">
+                  <textarea id="editDescription" type="text" class="materialize-textarea"></textarea>
+                </div>  
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button id="updateAddInfoBtn" class="modal-close waves-effect waves-green btn green darken-2">Update</button>
+            <button id="updateCancelBtn" class="modal-close waves-effect waves-green btn red darken-2">Cancel</button>
+          </div>   
+      </div>
+   
+</div>
+
+<!-------------------------------------------------- DISPLAY AND VIEW SELECTED EVENTS -------------------------------------------------->
+<div class="dislpay-content" style="display: none; margin-top: 40px;">
+    <div class="container">
+      <div>
+      <div class="row">
+
+        <!-- Info for pressing EDIT button or when the user want to Update event -->
+        <div class="edit-content col s10">
+          <div class="valign-wrapper" style="font-size: 20px;">
+              <i class="material-icons">info</i>
+              <span class="event-detail">Press EDIT button on the right if you wish to update this event.</span>
+          </div>  
+        </div>
+        <div class="edit-content col s2">
+          <!-- EDIT BUTTON-->
+          <div class="right-align">
+            <button id="editBtn" class="btn blue darken-2 z-depth-0 ">
+              <div class="valign-wrapper"> <i class="material-icons" style="margin-right: 5px;">mode_edit</i>Edit</div></button>
+          </div>
+        </div>
+
+        <!-- Info for pressing Done button when the user finish Update the event -->
+        <div class="done-content col s10" style="display: none">
+            <div class="valign-wrapper" style="font-size: 20px;">
+                <i class="material-icons">info</i>
+                <span class="event-detail">You can update each of the event details by clicking the blue edit icon.</span>
+            </div>  
+        </div>
+        <div class="done-content col s2" style="display: none">
+          <!-- DONE BUTTON-->
+          <div class="right-align">
+            <button id="doneBtn" class="btn green darken-2 z-depth-0">Done</button>
+          </div>
+        </div>
+      </div>
+      </div>
+    <div class="row">
+      <!--Event Poster Content-->
+      <div class="col s12 m6"> 
+          <!-- CARD PANEL 1ST-->
+          <div class="card-panel white lighten-1" style="padding:0;">
+              <div class="img-container">
+                    <!-- HIDDEN EVENT UID-->
+                    <input id="eventid" type="hidden">
+                    <!--DISPLAY EVENT POSTER IMAGE-->
+                    <img id="displayPoster" class="materialboxed" style="height:100%; width:auto;" src="">
+              </div>
+          </div>
+      </div>
+      
+      <!--Event Content-->
+      <div class="col s12 m6 ">
+            <!-- CARD PANEL 2ND-->
+            <div class="card-panel white black-text lighten-1">
+              <!--DISPLAY EVENT INTERESTED -->
+              <div class="row" style="margin-bottom: 10px;">
+                <div class="col s12">
+                  <div class="right-align">
+                    <span id="displayInterested" style="font-size: 15px;"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EDIT FOR EVENT POSTER -->
+              <div class="row">
+                  <div class="col s12 valign-wrapper">
+                    <!-- ICON FOR EDIT MODE -->
+                    <div class="edit-mode-click" style="display: none;">
+                        <a href="#modal-updatePoster" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger" >
+                        <i class="material-icons">mode_edit</i></a>
+                        <span style="margin-left: 5px;"><b>Update Poster</b></span> 
+                      </div>
+                    </div>
+              </div>
+
+              <!--DISPLAY EVENT NAME-->
+                <div class="row">
+                    <div class="col s12 valign-wrapper" style="font-size: 25px;line-height: 25px;">
+                        <!-- ICON FOR EDIT MODE -->
+                        <div class="edit-mode-click" style="display: none; margin-right: 10px;">
+                          <a href="#modal-updateName" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger">
+                          <i class="material-icons" >mode_edit</i></a>
+                        </div>
+                      <span id="displayName" style="font-weight: bold;"></span>
+                    </div>
+                  </div>
+                
+                <!--DISPLAY EVENT DATE-->
+                <div class="row">  
+                    <div class="col s12 valign-wrapper">
+                      <!-- ICON FOR EDIT MODE -->
+                      <div class="edit-mode-click" style="display: none;">
+                        <a href="#modal-updateDate" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger" >
+                        <i class="material-icons">mode_edit</i></a>
+                      </div>
+                      <!-- DEFAULT ICON FOR VIEW MODE -->
+                      <i class="default-view-icon material-icons" style="display: block;">event</i>  
+                      <span style="margin-left: 5px;"><b>DATE: </b></span>
+                      <span id="displayDate" class="event-detail"></span> 
+                    </div>
+                </div>
+                <!-- DISPLAY EVENT TIME -->
+                <div class="row">
+                  <div class="col s12 valign-wrapper">
+                    <!-- ICON FOR EDIT MODE -->
+                    <div class="edit-mode-click" style="display: none;">
+                        <a href="#modal-updateTime" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger" >
+                        <i class="material-icons">mode_edit</i></a>
+                      </div>
+                      <!-- DEFAULT ICON FOR VIEW MODE -->
+                      <i class="default-view-icon material-icons" style="display: block;">access_time</i> 
+                      <span style="margin-left: 5px;"><b>TIME: </b></span> 
+                      <span id="displayTime" class="event-detail"></span> 
+                  </div>
+                </div>
+
+                <!-- DISPLAY EVENT LOCATION -->
+                <div class="row">         
+                  <div class="col s12 valign-wrapper">
+                      <!-- ICON FOR EDIT MODE -->
+                    <div class="edit-mode-click" style="display: none;">
+                        <a href="#modal-updateLocation" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger" >
+                        <i class="material-icons">mode_edit</i></a>
+                      </div>
+                      <!-- DEFAULT ICON FOR VIEW MODE -->
+                      <i class="default-view-icon material-icons" style="display: block;">place</i> 
+                      <span style="margin-left: 5px;"><b>LOCATION: </b></span>  
+                      <span id="displayLocation" class="event-detail"></span> 
+                  </div>
+                </div>
+                  <!-- DISPLAY EVENT CATEGORY -->
+                <div class="row"> 
+                  <div class="col s12 valign-wrapper">
+                      <!-- ICON FOR EDIT MODE -->
+                    <div class="edit-mode-click" style="display: none;">
+                        <a href="#modal-updateCategory" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger" >
+                        <i class="material-icons">mode_edit</i></a>
+                      </div>
+                      <!-- DEFAULT ICON FOR VIEW MODE -->
+                      <i class="default-view-icon material-icons" style="display: block;">assignment</i> 
+                      <span style="margin-left: 5px;"><b>CATEGORY: </b></span> 
+                      <span id="displayCategory" class="event-detail"></span> 
+                  </div>
+                </div>
+                <!-- DISPLAY EVENT ORGANIZER -->
+                <div class="row">
+                  <div class="col s12 valign-wrapper">
+                      <!-- ICON FOR EDIT MODE -->
+                    <div class="edit-mode-click" style="display: none;">
+                        <a href="#modal-updateOrganizer" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger" >
+                        <i class="material-icons">mode_edit</i></a>
+                      </div>
+                      <!-- DEFAULT ICON FOR VIEW MODE -->
+                      <i class="default-view-icon material-icons" style="display: block;">group</i> 
+                      <span style="margin-left: 5px;"><b>ORGANIZER: </b></span> 
+                      <span id="displayOrganizer" class="event-detail"></span> 
+                  </div>
+                </div> 
+                   <!-- DISPLAY EVENT SPEAKER -->
+                <div class="row">  
+                  <div class="col s12 valign-wrapper">
+                      <!-- ICON FOR EDIT MODE -->
+                    <div class="edit-mode-click" style="display: none;">
+                        <a href="#modal-updateSpeaker" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger" >
+                        <i class="material-icons">mode_edit</i></a>
+                      </div>
+                      <!-- DEFAULT ICON FOR VIEW MODE -->
+                      <i class="default-view-icon material-icons" style="display: block;">record_voice_over</i>
+                      <span style="margin-left: 5px;"><b>SPEAKER: </b></span>  
+                      <span id="displaySpeaker" class="event-detail"></span> 
+                  </div>
+                </div>
+
+                <!-- DISPLAY EVENT CONTACT PERSON 1 -->
+                <div class="row" >
+                    <div class="col s12 valign-wrapper">
+                        <!-- ICON FOR EDIT MODE -->
+                    <div class="edit-mode-click" style="display: none;">
+                        <a href="#modal-updateContactPerson1" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger" >
+                        <i class="material-icons">mode_edit</i></a>
+                      </div>
+                      <!-- DEFAULT ICON FOR VIEW MODE -->
+                      <i class="default-view-icon material-icons" style="display: block;">contact_phone</i> 
+                      <span style="margin-left: 5px;"><b>Contact Person: </b></span> 
+                        <span id="displayContactName1" class="event-detail"></span> 
+                        <span id="displayContactNumber1" class="event-detail"></span> 
+                    </div>
+                </div> 
+
+                <!-- DISPLAY EVENT CONTACT PERSON 2 -->
+                <div class="row">
+                  <div class="col s12 valign-wrapper">
+                    <!-- ICON FOR EDIT MODE -->
+                    <div class="edit-mode-click" style="display: none;">
+                        <a href="#modal-updateContactPerson2" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger" >
+                        <i class="material-icons">mode_edit</i></a>
+                      </div>
+                      <!-- DEFAULT ICON FOR VIEW MODE -->
+                      <i class="default-view-icon material-icons" style="display: block;">contact_phone</i>
+                      <span style="margin-left: 5px;"><b>Contact Person: </b></span>  
+                      <span id="displayContactName2" class="event-detail"></span> 
+                      <span id="displayContactNumber2" class="event-detail"></span> 
+                  </div>
+                </div> 
+            </div>
+
+          <!-- CARD PANEL 3RD-->
+          <div class="card-panel white black-text lighten-1" >
+            
+            <div class="valign-wrapper" style="font-size: 20px;">
+              <!-- ICON FOR EDIT MODE -->
+              <div class="edit-mode-click" style="display: none;">
+                  <a href="#modal-updateAddInfo" class="mode-edit-icon waves-effect waves-light btn-floating cyan pulse modal-trigger">
+                  <i class="material-icons">mode_edit</i></a>
+                </div> 
+                <!-- DEFAULT ICON FOR VIEW MODE -->
+                <i class="default-view-icon material-icons" 
+                    style="display: block;">event_note</i> 
+               <span class="event-detail">Additional Information</span>
+            </div>
+            <div class="divider" style="margin-bottom:10px;"></div>
+
+            <div class="row" style="font-size:15px;">               
+              <!-- DISPLAY FOOD AVAIL-->
+              <div class="col s12 valign-wrapper">
+                  <!-- DEFAULT ICON FOR VIEW MODE -->
+                  <i id="displayFoodIcon" class="material-icons" style="color:red;">cancel</i>
+                  <span class="event-detail">Food Available</span> 
+              </div>
+              <!-- DISPLAY COUPON AVAIL-->
+              <div class="col s12 valign-wrapper">
+                  <!-- DEFAULT ICON FOR VIEW MODE -->
+                  <i id="displayCouponIcon" class="material-icons" style="color:red;">cancel</i> 
+                  <span class="event-detail">Coupon Available</span>
+                </div>
+            </div>    
+            <!-- DISPLAY EVENT DESCRIPTION -->
+            <div class="row">
+              <div class="col s12">
+                  <span id="displayDescription"  class="event-detail"></span> 
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>     
+</div>
+</div>        
+
+<!-------------------------------------------------- DELETE SELECTED EVENTS MODAL -------------------------------------------------->
+<div id="modalDelete" class="modal modal-fixed-footer" style="height: 40%;">
+    <div class="modal-content">
+      <h5>Delete</h5>
+      <input id="deleteID" type="hidden">
+      <div class="divider"></div>
+      <h5 id="delete-EventName"></h5>
+      <p>Are you sure want to detele this event?</p>
+    </div>
+    <div class="modal-footer">
+      <button id="deleteConfirmBtn" class="modal-close waves-effect waves-green green darken-2 z-depth-0 btn">Confirm</button>
+      <button class="modal-close waves-effect waves-green red darken-2 z-depth-0 btn">Cancel</button>
+    </div>
+  </div>
+
+  <!------------------------------------------------------------- FOOTER ------------------------------------------------------------------>
+  <footer class="page-footer z-depth-1 blue lighten-1">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="black-text">Final Year Project</h5>
+            <p class="black-text ">My name is Azamshah Linus from Netcentric Computing. Any help from all sources development on this project is greatly appreciated.</p>
+  
+  
+          </div>
+          <!-- <div class="col l3 s12">
+            <h5 class="black-text">Settings</h5>
+            <ul>
+              <li><a class="black-text" href="#!">Link 1</a></li>
+              <li><a class="black-text" href="#!">Link 2</a></li>
+              <li><a class="black-text" href="#!">Link 3</a></li>
+              <li><a class="black-text" href="#!">Link 4</a></li>
+            </ul>
+          </div> -->
+          <div class="col l3 s12">
+            <h5 class="black-text">Thanks to</h5>
+            <ul>
+              <li><a class="black-text" href="https://freepik.com">Freepik</a></li>
+              <li><a class="black-text" href="https://materializecss.com/">Materialize CSS</a></li>
+              <li><a class="black-text" href="https://perlis.uitm.edu.my/">UiTM Perlis</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright black-text">
+        <div class="container">
+            
+        </div>
+      </div>
+    </footer>
+  
+  <!------------------------ Firebase App (the core Firebase SDK) is always required and must be listed first ---------------------------------->
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-storage.js"></script>
+  
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBSlp0rjG2yRvkRK_qyzrXpVxHkWkXBJiE",
+      authDomain: "e-announce.firebaseapp.com",
+      databaseURL: "https://e-announce.firebaseio.com",
+      projectId: "e-announce",
+      storageBucket: "e-announce.appspot.com",
+      messagingSenderId: "436566831588",
+      appId: "1:436566831588:web:fa5411e16dee84e0"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+      
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    // Get a reference to the storage service, which is used to create references in your storage bucket
+    var storage = firebase.storage();
+    // Create a storage reference from our storage service
+    var storageRef = storage.ref();
+
+  </script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script src="scripts/index.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/soundex.js"></script>
+  <script src="scripts/maps.js"></script>
+  <script src="scripts/Geohash_ChrisVeness.js"></script>
+  
+  <!-- Google Maps API -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSlp0rjG2yRvkRK_qyzrXpVxHkWkXBJiE&callback=initMap">
+    </script>
+
+</body>
+</html>
